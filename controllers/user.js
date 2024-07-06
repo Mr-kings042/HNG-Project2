@@ -10,11 +10,12 @@ const RegisterUser = asynchandler (async (req, res) =>{
     if(!firstName || !lastName || !email || !password || !phone){
         res.status(422).json({
             errors: [
-    {
-      field: error.param ,
-      message: "please fill all the fields"
-    },
-  ]
+  { field: 'firstName', message: 'First name is required' },
+{ field: 'lastName', message: 'Last name is required' },
+{ field: 'email', message: 'Email is required' },
+{ field: 'phone', message: 'phone is required' },
+ { field: 'password', message: 'Password is required' },
+  ],
         });
         }
         const userExist = await User.findOne({email});
